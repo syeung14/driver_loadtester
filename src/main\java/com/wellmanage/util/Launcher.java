@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -62,6 +61,25 @@ public class Launcher {
 		}
 	}
 	
+	private void readWriteFileInThread(String fileName) {
+		byte[] fileContent = null;
+		try {
+			fileContent = LoadTestReader.readFile(fileName);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("file size: " + fileContent.length);
+		
+		try {
+			new MultiThreadLoadWriter().writandTimeStat(fileContent, fileName);
+			System.out.println("write finished.");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
 	private void readWriteFileInWhole(String fileName) {
 		byte[] fileContent = null;
 		try {
@@ -93,7 +111,7 @@ public class Launcher {
 	      }).start();
 	}
 	private void createFile(String fileName) {
-		LoadTestWriter.createFile(fileName, 1024*1024*700);
+		LoadTestWriter.createFile(fileName, 1024*1024*70);
 	}
 
 	public static void main(String[] args) {
@@ -106,8 +124,9 @@ public class Launcher {
 		String outFileName = "outputfile.txt";
 		if (args.length > 0) {
 			if ("-w".equalsIgnoreCase(args[0]) ) {
+//				la.createFile(fileName);
 				
-				la.readWriteFileInWhole(fileName);
+				la.readWriteFileInThread(fileName);
 			} else {
 				System.out.println("unknown option.");
 			}
