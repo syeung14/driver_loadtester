@@ -4,6 +4,26 @@
 	<groupId>driver_loadtester</groupId>
 	<artifactId>driver_loadtester</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation></activation>
+			<build>
+				<directory>devdist</directory>
+			</build>
+		</profile>
+	
+	</profiles>
+	
+	<dependencies>
+		<dependency>
+			<artifactId>junit</artifactId>
+			<groupId>junit</groupId>
+			<version>4.10</version>
+		</dependency>
+	</dependencies>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
