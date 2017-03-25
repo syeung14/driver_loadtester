@@ -1,4 +1,4 @@
-package com.wellmanage.util;
+package com.mssyeung.util;
 
 import java.util.ArrayList;
 import java.util.List;

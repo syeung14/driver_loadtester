@@ -1,4 +1,4 @@
-package com.wellmanage.util;
+package com.mssyeung.util;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package com.wellmanage.util;
+package com.mssyeung.util;
 
 import java.io.BufferedReader;
 import java.io.File;
